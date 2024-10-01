@@ -19,12 +19,41 @@ const ProductsPage = async () => {
   // const prod = response.data;
   // const products = Product.find();
 
-  const response = await fetch('https://fakestoreapi.com/products',
-    {
-      cache: 'force-cache'
-    }
-  );
+  //-----------first task------------------------
+
+  // const response = await fetch('https://fakestoreapi.com/products',
+  //   {
+  //     cache: 'force-cache'
+  //   }
+  // );
+  // const products = await response.json();
+
+  //-----------second task------------------------
+
+
+  const response = await fetch('http://localhost:3000//api/productsApi', {
+    cache: 'force-cache',
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Error fetching products:', errorText);
+    return <div>Error loading products.</div>; // Show error message
+  }
+
   const products = await response.json();
+
+
+  // console.log("Fetched products:", products);
+
+
+
+  // console.log("------------------------------------------------------------------------------------------------");
+  // console.log(products);
+  // console.log("------------------------------------------------------------------------------------------------");
+
+
+  //------------third task-----------------------
 
 
 
@@ -33,8 +62,8 @@ const ProductsPage = async () => {
       <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h3 className="text-lg font-semibold text-green-700 mb-2">{product.name}</h3>
-        <p className="text-gray-600">${product.price.toFixed(2)}</p>
-        <Link href={`/pages/products/${product.id}`} className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300">
+        <p className="text-gray-600">${product.price}</p>
+        <Link href={`/pages/products/${product._id}`} className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300">
           View Details
         </Link>
       </div>

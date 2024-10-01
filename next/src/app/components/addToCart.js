@@ -25,7 +25,7 @@ const AddToCartButton = ({ product }) => {
     }
 
     // Check if the product is already in the cart
-    const isProductInCart = cart.some(item => item.id === product.id);
+    const isProductInCart = cart.some(item => item.id === product._id);
 
     if (!isProductInCart) {
       // If the product is not in the cart, add it
