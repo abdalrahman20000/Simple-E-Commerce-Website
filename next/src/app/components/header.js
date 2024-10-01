@@ -1,12 +1,24 @@
-"use client"; // Add this line to indicate it's a client component
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ShoppingCart } from 'lucide-react';
+import CartSidebar from '../components/sideBarCart'; 
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+        const existingCart = sessionStorage.getItem("cart");
+        const cart = existingCart ? JSON.parse(existingCart) : [];
+        setCartItems(cart);
+    }, []);
+
+    const toggleCartSidebar = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
         <header className="bg-green-700 text-white shadow-lg">
@@ -19,7 +31,6 @@ const Header = () => {
                         priority
                         className='rounded-full'
                     />
-                    {/* <Link href="/" className="text-2xl font-bold pl-5">FootballZone</Link> */}
                 </div>
                 <nav className="hidden md:flex space-x-4 mr-10">
                     <Link href="/" className="hover:text-yellow-300 transition duration-300">Home</Link>
@@ -27,9 +38,9 @@ const Header = () => {
                     <Link href="/pages/products" className="hover:text-yellow-300 transition duration-300">Products</Link>
                 </nav>
                 <div className="flex items-center space-x-4">
-                    {/* <Link href="/cart" className="hover:text-yellow-300 transition duration-300"> */}
-                    <ShoppingCart />
-                    {/* </Link> */}
+                    <button onClick={toggleCartSidebar} className="hover:text-yellow-300 transition duration-300">
+                        <ShoppingCart />
+                    </button>
                     <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
                         {isOpen ? <X /> : <Menu />}
                     </button>
@@ -42,6 +53,7 @@ const Header = () => {
                     <Link href="/pages/products" className="block py-2 px-4 text-sm hover:bg-green-600">Products</Link>
                 </div>
             )}
+            {isOpen && <CartSidebar cartItems={cartItems} onClose={toggleCartSidebar} />}
         </header>
     );
 };
