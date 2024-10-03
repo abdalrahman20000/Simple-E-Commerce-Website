@@ -1,6 +1,7 @@
 import Image from "next/image";
-import Link from 'next/link';
 import Head from 'next/head';
+import Link from 'next/link';
+import { FormClient } from './components/registerForm';
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         <meta name="twitter:description" content="Latest football gear and accessories available." />
         <meta name="twitter:image" content="https://example.com/image.jpg" /> {/* Replace with a relevant image URL */}
       </Head>
-      <main className="container mx-auto px-4 py-8">
+      {/* <main className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-green-700">Welcome to FootballZone</h1>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
@@ -30,6 +31,15 @@ export default function Home() {
             <p className="text-gray-600">Learn more about our passion for football and commitment to quality.</p>
             <Link href="/pages/about" className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300">Read More</Link>
           </div>
+        </div>
+      </main> */}
+
+      <main className="h-screen flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-md w-96">
+          <h2 className="text-2xl font-bold mb-6 text-center text-green-700">
+            Login or Sign Up
+          </h2>
+          <FormClient />
         </div>
       </main>
     </div>

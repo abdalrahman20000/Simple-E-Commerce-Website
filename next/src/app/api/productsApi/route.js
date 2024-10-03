@@ -1,7 +1,7 @@
 // app/api/productsApi/route.js
 import connect from '../../config/db'; // Adjust path as necessary
 import Product from '../../models/product'; // Adjust path as necessary
-
+import { NextResponse } from 'next/server';
 export async function GET(req) {
   await connect();
 

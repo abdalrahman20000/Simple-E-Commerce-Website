@@ -36,6 +36,7 @@ const Header = () => {
                     <Link href="/" className="hover:text-yellow-300 transition duration-300">Home</Link>
                     <Link href="/pages/about" className="hover:text-yellow-300 transition duration-300">About</Link>
                     <Link href="/pages/products" className="hover:text-yellow-300 transition duration-300">Products</Link>
+                    <Link href="/pages/managament" className="hover:text-yellow-300 transition duration-300">management</Link>
                 </nav>
                 <div className="flex items-center space-x-4">
                     <button onClick={toggleCartSidebar} className="hover:text-yellow-300 transition duration-300">
